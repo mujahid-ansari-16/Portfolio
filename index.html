@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Mujahid - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Deeper dark background */
+            color: #e0e0e0; /* Softer light text */
+        }
+        .section-heading {
+            border-bottom: 2px solid #333; /* Darker subtle underline for headings */
+            padding-bottom: 0.5rem;
+            margin-bottom: 2.5rem; /* Increased margin for better separation */
+            color: #f0f0f0; /* Brighter color for headings */
+            display: inline-block; /* To make border-bottom only cover the text */
+        }
+        .icon-link {
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .icon-link:hover {
+            transform: scale(1.1);
+            color: #00d4ff; /* Brighter teal on hover */
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        .animate-pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* Delayed animations */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Typing effect for hero section */
+        .typing-effect {
+            overflow: hidden; /* Ensures the content is not visible until the typing animation starts */
+            border-right: .15em solid #00d4ff; /* The blinking cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Centers the text */
+            letter-spacing: .05em; /* Adjust as needed */
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        /* Typing animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Blinking cursor animation */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00d4ff; }
+        }
+
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200">
+
+    <header class="bg-gray-800 shadow-xl py-4 px-6 fixed w-full z-20 top-0 rounded-b-xl">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#hero" class="text-3xl font-extrabold text-teal-400 rounded-lg p-2 hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105">M. MUJAHID</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-lg font-medium hover:text-teal-400 transition-colors p-2 rounded-lg hover:bg-gray-700 transform hover:scale-105">About</a>
+                <a href="#skills" class="text-lg font-medium hover:text-teal-400 transition-colors p-2 rounded-lg hover:bg-gray-700 transform hover:scale-105">Skills</a>
+                <a href="#education" class="text-lg font-medium hover:text-teal-400 transition-colors p-2 rounded-lg hover:bg-gray-700 transform hover:scale-105">Education</a>
+                <a href="#projects" class="text-lg font-medium hover:text-teal-400 transition-colors p-2 rounded-lg hover:bg-gray-700 transform hover:scale-105">Projects</a>
+                <a href="#contact" class="text-lg font-medium hover:text-teal-400 transition-colors p-2 rounded-lg hover:bg-gray-700 transform hover:scale-105">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-200 hover:text-teal-400 focus:outline-none">
+                <i class="fas fa-bars text-3xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-30 hidden flex-col items-center justify-center space-y-8 md:hidden rounded-lg">
+        <button id="close-mobile-menu" class="absolute top-8 right-8 text-gray-200 hover:text-teal-400 focus:outline-none">
+            <i class="fas fa-times text-4xl"></i>
+        </button>
+        <a href="#hero" class="text-4xl text-teal-400 hover:text-white transition-colors duration-300 block py-2" onclick="closeMobileMenu()">Home</a>
+        <a href="#about" class="text-4xl text-gray-200 hover:text-teal-400 transition-colors duration-300 block py-2" onclick="closeMobileMenu()">About</a>
+        <a href="#skills" class="text-4xl text-gray-200 hover:text-teal-400 transition-colors duration-300 block py-2" onclick="closeMobileMenu()">Skills</a>
+        <a href="#education" class="text-4xl text-gray-200 hover:text-teal-400 transition-colors duration-300 block py-2" onclick="closeMobileMenu()">Education</a>
+        <a href="#projects" class="text-4xl text-gray-200 hover:text-teal-400 transition-colors duration-300 block py-2" onclick="closeMobileMenu()">Projects</a>
+        <a href="#contact" class="text-4xl text-gray-200 hover:text-teal-400 transition-colors duration-300 block py-2" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <main class="pt-24">
+       
+        <section id="hero" class="h-screen flex items-center justify-center text-center bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+            <!-- Background elements for visual interest -->
+            <div class="absolute inset-0 z-0 opacity-20">
+                <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-teal-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse delay-1"></div>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-6 relative z-10">
+                <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight mb-4 animate-fade-in-down">
+                    Hi, I'm <span class="text-teal-400">Mohammad Mujahid</span>
+                </h1>
+                <p class="text-2xl md:text-4xl text-gray-300 mb-10 typing-effect">
+                    A passionate Full-Stack Developer
+                </p>
+                <a href="#projects" class="inline-flex items-center bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-bold py-4 px-10 rounded-full text-xl shadow-2xl transform transition-transform duration-500 hover:scale-105 animate-fade-in-up delay-2">
+                    Explore My Work <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-400 animate-bounce cursor-pointer">
+                    <i class="fas fa-chevron-down text-3xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit animate-fade-in-up">
+                    <i class="fas fa-user-circle mr-4 text-teal-400"></i>About Me
+                </h2>
+                <div class="max-w-4xl mx-auto text-xl leading-relaxed text-gray-300 bg-gray-800 p-8 rounded-2xl shadow-2xl animate-fade-in-up delay-1">
+                    <p class="mb-8">
+                        I am an <span class="font-semibold text-teal-300">analytical thinker</span> with strong communication skills and a collaborative approach.
+                        I easily adapt to new environments and am enthusiastic about improving team success and expanding my skill set.
+                        I am known for my <span class="font-semibold text-teal-300">positive attitude</span> and commitment to personal growth and advancement.
+                    </p>
+                    <p class="mb-8">
+                        As a <span class="font-semibold text-teal-300">Full-Stack Developer</span>, I thrive on building dynamic and responsive web applications from the ground up.
+                        My focus lies in crafting <span class="font-semibold text-teal-300">robust functionality</span> and intuitive, <span class="font-semibold text-teal-300">user-friendly interfaces</span> that deliver exceptional digital experiences.
+                    </p>
+                    <p>
+                        Passionate about continuous learning, I am always exploring new technologies and methodologies
+                        to deliver high-quality, scalable, and efficient solutions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="skills" class="py-20 md:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit animate-fade-in-up">
+                    <i class="fas fa-tools mr-4 text-teal-400"></i>My Skills
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                    
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-xl transform transition-transform hover:scale-105 duration-300 animate-fade-in-up delay-1">
+                        <h3 class="text-3xl font-semibold mb-6 text-teal-400"><i class="fas fa-laptop-code mr-3"></i>Technical Skills</h3>
+                        <ul class="list-none text-gray-300 space-y-3 text-lg">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>HTML, CSS, JavaScript</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>React, Node.js, Express, MongoDB</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Python Programming</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-xl transform transition-transform hover:scale-105 duration-300 animate-fade-in-up delay-2">
+                        <h3 class="text-3xl font-semibold mb-6 text-teal-400"><i class="fas fa-cogs mr-3"></i>Frameworks & Tools</h3>
+                        <ul class="list-none text-gray-300 space-y-3 text-lg">
+                            <li class="flex items-center"><i class="fas fa-wrench text-blue-400 mr-3"></i>Tailwind CSS, Bootstrap</li>
+                            <li class="flex items-center"><i class="fas fa-code-branch text-blue-400 mr-3"></i>VS Code, Git, GitHub</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-xl transform transition-transform hover:scale-105 duration-300 animate-fade-in-up delay-3">
+                        <h3 class="text-3xl font-semibold mb-6 text-teal-400"><i class="fas fa-certificate mr-3"></i>Certifications</h3>
+                        <ul class="list-none text-gray-300 space-y-3 text-lg">
+                            <li class="flex items-center"><i class="fas fa-award text-yellow-400 mr-3"></i>Ybi foundation - Python Programming</li>
+                            <li class="flex items-center"><i class="fas fa-award text-yellow-400 mr-3"></i>Complete Coding - JavaScript & React</li>
+                            <li class="flex items-center"><i class="fas fa-award text-yellow-400 mr-3"></i>Complete Coding -  Node.js, Express.js & MongoDB</li>
+                            <li class="flex items-center"><i class="fas fa-award text-yellow-400 mr-3"></i>Internshala - C Programming</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit animate-fade-in-up">
+                    <i class="fas fa-graduation-cap mr-4 text-teal-400"></i>Education
+                </h2>
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="absolute hidden md:block w-1 bg-gray-700 h-full left-1/2 transform -translate-x-1/2"></div>
+
+                    <div class="mb-12 flex flex-col md:flex-row items-center w-full md:justify-between animate-fade-in-up delay-1">
+                        <div class="order-1 md:w-5/12 text-center md:text-right">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-xl transform transition-transform hover:scale-105 duration-300">
+                                <h3 class="text-2xl md:text-3xl font-semibold text-teal-400 mb-2">B.TECH in Information Technology</h3>
+                                <p class="text-lg md:text-xl text-gray-300">Nagpur Institute of Technology, Nagpur</p>
+                                <p class="text-md md:text-lg text-gray-400 mt-1">2022-2025 | Average CGPA: 7.53</p>
+                                <i class="fas fa-school text-5xl text-blue-500 mt-4 hidden md:block"></i>
+                            </div>
+                        </div>
+                        <div class="z-10 order-0 md:order-1 flex items-center justify-center w-10 h-10 bg-teal-500 rounded-full shadow-lg ring-4 ring-gray-900 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                            <i class="fas fa-chalkboard-teacher text-white text-xl"></i>
+                        </div>
+                        <div class="order-2 md:w-5/12 text-center md:text-left mt-4 md:mt-0">
+                        </div>
+                    </div>
+                    <div class="mb-12 flex flex-col md:flex-row items-center w-full md:justify-between md:flex-row-reverse animate-fade-in-up delay-2">
+                        <div class="order-1 md:w-5/12 text-center md:text-left">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-xl transform transition-transform hover:scale-105 duration-300">
+                                <h3 class="text-2xl md:text-3xl font-semibold text-teal-400 mb-2">12th Standard</h3>
+                                <p class="text-lg md:text-xl text-gray-300">M.M.Rabbani High School Junior College Kamptee, Nagpur</p>
+                                <p class="text-md md:text-lg text-gray-400 mt-1">2020-2021 | Percentage: 83%</p>
+                                <i class="fas fa-book-reader text-5xl text-purple-500 mt-4 hidden md:block"></i>
+                            </div>
+                        </div>
+                        <div class="z-10 order-0 md:order-1 flex items-center justify-center w-10 h-10 bg-teal-500 rounded-full shadow-lg ring-4 ring-gray-900 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                            <i class="fas fa-book text-white text-xl"></i>
+                        </div>
+                        <div class="order-2 md:w-5/12 text-center md:text-right mt-4 md:mt-0">
+                        </div>
+                    </div>
+
+                    <div class="mb-12 flex flex-col md:flex-row items-center w-full md:justify-between animate-fade-in-up delay-3">
+                        <div class="order-1 md:w-5/12 text-center md:text-right">
+                            <div class="bg-gray-800 p-6 rounded-xl shadow-xl transform transition-transform hover:scale-105 duration-300">
+                                <h3 class="text-2xl md:text-3xl font-semibold text-teal-400 mb-2">10th Standard</h3>
+                                <p class="text-lg md:text-xl text-gray-300">M.M.Rabbani High School Junior College Kamptee, Nagpur</p>
+                                <p class="text-md md:text-lg text-gray-400 mt-1">2018-2019 | Percentage: 75%</p>
+                                <i class="fas fa-pencil-ruler text-5xl text-yellow-500 mt-4 hidden md:block"></i>
+                            </div>
+                        </div>
+                        <div class="z-10 order-0 md:order-1 flex items-center justify-center w-10 h-10 bg-teal-500 rounded-full shadow-lg ring-4 ring-gray-900 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                            <i class="fas fa-pencil-alt text-white text-xl"></i>
+                        </div>
+                        <div class="order-2 md:w-5/12 text-center md:text-left mt-4 md:mt-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="projects" class="py-20 md:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-heading mx-auto w-fit animate-fade-in-up">
+                    <i class="fas fa-project-diagram mr-4 text-teal-400"></i>My Projects
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl transform transition-transform hover:scale-105 duration-300 flex flex-col justify-between animate-fade-in-up delay-1">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4 text-teal-400">Houser (Web)</h3>
+                            <p class="text-gray-300 text-lg mb-6">
+                                Designed and developed a rental booking website for short-term stays and house listings,
+                                offering a comprehensive platform for both hosts and guests.
+                            </p>
+                            <ul class="list-none text-gray-400 mb-8 space-y-2 text-md">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Implemented core functionalities including dynamic per-night pricing.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Integrated robust user authentication for secure access.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Empowered hosts to effortlessly add, edit, and delete their property listings.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Provided guests with intuitive search, viewing of available homes, and direct booking initiation.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto">
+                            <p class="text-gray-300 text-lg mb-6">
+                                <span class="font-semibold text-teal-300">Tech Stack:</span> HTML, Tailwind CSS, JavaScript, Node.js, Express.js, MongoDB
+                            </p>
+                            <a href="https://houser-rental-platform.onrender.com" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transition-colors icon-link">
+                                View Live <i class="fas fa-external-link-alt ml-3"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl transform transition-transform hover:scale-105 duration-300 flex flex-col justify-between animate-fade-in-up delay-2">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4 text-teal-400">Post Blog Website (React)</h3>
+                            <p class="text-gray-300 text-lg mb-6">
+                                Developed a fully responsive web application for comprehensive post management,
+                                designed for seamless content creation and sharing.
+                            </p>
+                            <ul class="list-none text-gray-400 mb-8 space-y-2 text-md">
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Incorporated secure login/logout functionalities using React and Appwrite Service for user authentication.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Enabled users to effortlessly share photos and opinions.</li>
+                                <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-3 mt-1"></i>Integrated a TinyMCE real-time text editor, facilitating dynamic and rich content creation.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto">
+                            <p class="text-gray-300 text-lg mb-6">
+                                <span class="font-semibold text-teal-300">Tech Stack:</span> React, Tailwind CSS, TinyMCE,  Appwrite Service
+                            </p>
+                            <a href="https://post-blog-3g8h.vercel.app" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transition-colors icon-link">
+                                View Live <i class="fas fa-external-link-alt ml-3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-16 section-heading mx-auto w-fit animate-fade-in-up">
+                    <i class="fas fa-handshake mr-4 text-teal-400"></i>Let's Connect!
+                </h2>
+                <div class="max-w-3xl mx-auto bg-gray-800 p-10 rounded-2xl shadow-xl animate-fade-in-up delay-1">
+                    <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed">
+                        I'm always excited to discuss new projects, collaboration opportunities, or simply share ideas.
+                        Feel free to reach out through any of the channels below, or connect with me on GitHub!
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center">
+                    
+                        <a 
+                           class="flex flex-col items-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                            <i class="fas fa-envelope text-5xl text-teal-400 mb-4 group-hover:text-white transition-colors"></i>
+                            <span class="text-xl text-gray-200 group-hover:text-white font-semibold mb-1">Email Me</span>
+                            <span class="text-md text-gray-400 group-hover:text-gray-300">mmujahid162004@gmail.com</span>
+                        </a>
+                        <a href="https://github.com/mujahid-ansari-16" target="_blank" rel="noopener noreferrer"
+                           class="flex flex-col items-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                            <i class="fab fa-github text-5xl text-teal-400 mb-4 group-hover:text-white transition-colors"></i>
+                            <span class="text-xl text-gray-200 group-hover:text-white font-semibold mb-1">GitHub Profile</span>
+                            <span class="text-md text-gray-400 group-hover:text-gray-300">github.com/mujahid-ansari-16</span>
+                        </a>
+                        <a 
+                           class="flex flex-col items-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                            <i class="fas fa-phone-alt text-5xl text-teal-400 mb-4 group-hover:text-white transition-colors"></i>
+                            <span class="text-xl text-gray-200 group-hover:text-white font-semibold mb-1">Call Me</span>
+                            <span class="text-md text-gray-400 group-hover:text-gray-300">+91-9730949431</span>
+                        </a>
+                        <div class="flex flex-col items-center p-6 bg-gray-700 rounded-xl hover:bg-gray-600 transition-all          duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                            <i class="fas fa-map-marker-alt text-5xl text-teal-400 mb-4"></i>
+                            <span class="text-xl text-gray-200 font-semibold mb-1">My Location</span>
+                            <span class="text-md text-gray-400">Naya Bazar Kamptee, Nagpur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
