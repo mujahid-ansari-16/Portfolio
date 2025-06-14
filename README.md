@@ -31,9 +31,7 @@ Icons: Font Awesome
 
 🌐 Live Demo
 You can view the live version of my portfolio here:
-
-View Live Portfolio
-(Remember to replace https://your-github-pages-url-here.com with your actual GitHub Pages URL or Vercel/Netlify URL once deployed)
+portfolio-two-mauve-94.vercel.app
 
 💻 How to Run Locally
 If you'd like to explore the code or run this project on your local machine, follow these simple steps:
@@ -53,8 +51,7 @@ Simply open the index.html file in your preferred web browser. All necessary CSS
 
 📂 Project Structure
 .
-├── index.html          # Main HTML structure of the portfolio
-├── style.css           # Custom CSS for styling and animations
+├── index.html          # Main HTML structure of the portfolio Style in Tailwind CSS
 └── script.js           # JavaScript for interactive elements (mobile menu, scroll animations)
 
 🤝 Connect With Me
@@ -66,8 +63,6 @@ GitHub: github.com/mujahid-ansari-16
 
 Phone: +91-9730949431
 
-🙏 Acknowledgements
-Tailwind CSS for utility-first styling.
 
 Font Awesome for a wide range of icons.
 
