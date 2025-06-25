@@ -31,7 +31,7 @@ Icons: Font Awesome
 
 🌐 Live Demo
 You can view the live version of my portfolio here:
-portfolio-two-mauve-94.vercel.app
+https://portfolio-two-mauve-94.vercel.app
 
 💻 How to Run Locally
 If you'd like to explore the code or run this project on your local machine, follow these simple steps:
